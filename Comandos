@@ -1,0 +1,193 @@
+criando usuarios 
+    add user = useradd 
+    excluir user = userdel -f "nome"
+
+criar user com pasta 
+    add user = useradd   "nome de user"  -m
+
+Criar user temporarios 
+     useradd guest -c "Convidado" -m -e 25/06/2022
+
+
+    Comando Uteis para criar users     
+     -c = convidado 
+     -e = data determinada 
+     -s = tipo de terminal  / bin/bash
+     -e = pedir ao user que troque a senha 
+     -m = criar diretorio do use
+     -p = senha 
+     -g = trocar de grupo 
+     -G = add users em mais de um grupo
+
+     usermod = modificar user
+
+ver users ja casdastrados com ID
+    cat /etc/passwd
+
+criando usuarios em lote
+    useradd "convidado"  -c " convidado especial" -s /bin/bash -m -p $(openssl passwd -cript Senha123 )
+            
+Adicionando users a mais de um grupo
+    usermod -G adm,sudo "nome de usuarios"
+    
+Criando grupos 
+    grupadd
+    cat /etc/group = ver os grupos
+    remover user de um grupo especifico = gpasswd -d "usuario" "gupo"
+
+Permicoes 
+    ls -l = ver as Permicoes
+    
+Gereanciador de pacotes 
+    apt-get = ubuntu
+    apt = ubuntu 
+
+    dnf = centos
+    yum = centos
+
+    lsblk = lista discos
+    fdisk = 
+
+    mkfs.(tipo de arquivos) / dev/sdb
+
+    nano etc/fstab
+
+Copiando Arquivos ou movendo arquivos 
+    mv /etc/* /disk2/backup/ -v -r  -i 
+    cp /etc/* /disk2/backup/ -v -r
+    -v = ver os possiveis erros durante a Copia
+    -r = modo recursivo copia diretorios e sub diretorios
+    -i = modo comparacao que verifica se ja existe algum arquivo com mesmo nome 
+
+Visualizando Processos 
+    ps = mostra somente os processos do user logando
+    ps aux = mostra todos os processos de todos users
+    w = mostra quem esta logado no sistema assim como horario
+    who - a = mostra o PID do user 
+
+DOCKER
+    docker ps = em execucao
+    docker ps -a = em execucao ou nao 
+    docker run -dti ubuntu = roda em backgrownd
+    docker run = roda um cantainer 
+    docker container run = roda um container
+    docker rm "nome ou id" = deleta um docker
+    docker images = vericar as imagens baixadas 
+    docker rmi "nome da imagem = deleta imagens
+    docker run -dti "nome da imagem" = instala uma imagem ja baixada ou baixa na nuvem
+    
+Copiando arquivos para o docker
+    docker cp " Meu Arquivo" "Ubuntu-A":/destino 
+    docker cp  "Ubuntu-A":/destino " Meu Arquivo" 
+
+Baixando por Tag ( Versao especifica )
+    docker pull debian:"versao" 
+
+Criando container do Mysql
+    docker run -dti 
+    docker run -e MYSQL_ROOT_PASSWORD=Senha123 --name Mysql -A -d -p 3306:
+    docker start " Mysql" = starta
+
+Armazenamento de Dados
+
+Tipos de Mount
+     bind, named e Dockerfile volumes
+
+docker volume prune = exclui todos os volumes dentro do  que nao estao em uso 
+docker container prune = exclui todos os containers dentro do  que nao estao em uso 
+
+
+     
+
+docker info = da informacoes sobre o servidor
+docker ps 
+docker container logs "nome do docker" = verificar informacoes
+docker container top "nome do container" = verificar processos
+docker network ls = ver a rede
+docker network inspect = mostra toda a estruturada de rede dos containers
+docker network create "minha rede" = criar uma rede 
+docker run -dti --name Ubuntu-A --network minha rede
+
+ 
+DEFINICÃO E CRIANCAO DE UM DOCKER
+
+docker node ls = mostra todos os nós add no server 
+
+
+
+docker node update --availability drain "nome do server"
+docker node update --availability active "nome do server "
+
+CRIANDO UM LOADBALANCE AWS
+
+
+KUBERNETS 
+    checando o status da criacao do cluster via AWS CLI
+    aws eks --region "regiao onde se encontra" describe-cluster --name Kubernets-lab --query cluster.status
+
+
+docker build . -t "sua conta no dokerhub"  /app-html:1.0 = mandar para nuvem imagem customizada 
+docker login = logar na sua conta no docker
+
+
+kubectl port-forward pod/Mysql-pod "porta origem" :  " porta de destino" 
+
+
+     
+
+PERSISTENCIAS DE DADOS EM UM POD 
+    PesistenteVolume = onde estara o ambiente fisico dos dados onde vc salvara as informacoes
+    PersistenteVolumeClaim = 
+    
+
+INTRODUCAO O GIT 
+
+ Comandos Basicos
+
+    git clone "git@github.com:xxcostaxx/teste.git" = clonar pasta do git
+    eval $(ssh-agent -s) = iniciar o agente ssh 
+    ssh-keygen -t ed25519 -C reginaldoinf@gmail.com = criar uma chave ssh com a criptografia ed25519
+    ssh-add id_ed25519 = adicionar a chave keygerada no ssh 
+    git config --global user.email "reginaldoinf@gmail.com" 
+    git commit -m "commit inicial" = criando um commit
+    reginaldo$ git config --list = mostra todas as configuracoes
+    git remote add origin https://github.com/xxcostaxx/literate-couscous = adicionando repositorio remodoto do git
+    git remote -v = listar ou mostrar repositorio remoto
+    git pull origen "master" = baixar repositorio 
+    git checkout "main" = sai de uma main para outra 
+     
+
+
+LOGS 
+    git log --oneline = traz historioco de uma linha somente 
+    git log --graf = mostra de uma forma mais ilustrada o log
+    
+
+REVERTENDO COMMITs
+    git revert =
+    git reset = 
+
+    FAZENDO MEU PRIMEIRO PULL REQUEST
+        1) Fazer um fork no github do projeto em especifico
+        2) clonar no git em seu pc o projeto "forkado" 
+        3) entrar dentro projeto clonado e fazer as mudancas sigeridas em aula 
+        4) fazer um checkout para trocar de Branch 
+            git chackout -b "adicona-nova Branch"
+        5) dar um git add*
+        6) dar um git commit -m "adiciona assinatura "nome"
+        7) Fazer o  pussh 
+            git push origin "adiciona-nova Branch"
+
+ISSUES GIT-HUB
+    ISSUES local no git-hub voltada para discussoes  
+
+ALIASES NO GIT
+    git config --global alias."s" status = criando um apelido do comando git status para git s
+    git config -- global --unset alias.s = remove o atalho colocando no comando anterior 
+
+
+
+         
+GIT E GITLAB 
+    versionamento = controle de versoes de documento 
+ 
