@@ -173,7 +173,7 @@ REVERTENDO COMMITs
         3) entrar dentro projeto clonado e fazer as mudancas sigeridas em aula 
         4) fazer um checkout para trocar de Branch 
             git chackout -b "adicona-nova Branch"
-        5) dar um git add*
+        5) dar um git add *
         6) dar um git commit -m "adiciona assinatura "nome"
         7) Fazer o  pussh 
             git push origin "adiciona-nova Branch"
