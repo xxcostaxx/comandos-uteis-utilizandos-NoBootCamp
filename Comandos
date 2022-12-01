@@ -143,7 +143,8 @@ PERSISTENCIAS DE DADOS EM UM POD
 INTRODUCAO O GIT 
 
  Comandos Basicos
-
+    git remote add origin "endereço do repositorio " = Adiciona um repositorio remoto 
+    git remote remove origin master = remoteve repositorio Remoto  
     git clone "git@github.com:xxcostaxx/teste.git" = clonar pasta do git
     eval $(ssh-agent -s) = iniciar o agente ssh 
     ssh-keygen -t ed25519 -C reginaldoinf@gmail.com = criar uma chave ssh com a criptografia ed25519
